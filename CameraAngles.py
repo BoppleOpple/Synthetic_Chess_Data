@@ -75,11 +75,9 @@ class LoadPiecesFromFEN(bpy.types.Operator):
         
         self.collection.objects.link(piece)
     
-    def execute(self, context, thing):
+    def execute(self, context):
         origin = Vector((-3.5,  3.5))
         offset = Vector(( 0.0,  0.0))
-        
-        print(thing)
         
         self.clearPieces()
         
