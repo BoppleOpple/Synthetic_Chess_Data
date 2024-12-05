@@ -1,6 +1,7 @@
 import bpy
 import math
 import time
+import os
 from mathutils import Vector
 from random import random, sample
 
@@ -15,7 +16,7 @@ LIGHT_MIN_DISTANCE = 20.0
 LIGHT_MAX_DISTANCE = 50.0
 LIGHT_MIN_PITCH = math.pi/10.0
 LIGHT_MAX_PITCH = math.pi/2.0
-PROPORTION_POSITIONS_RENDERED = 0.5
+PROPORTION_POSITIONS_RENDERED = 0.01
 RENDER_OUTDIR = "./output/"
 RENDERS_PER_POSITION = 2
 
@@ -99,6 +100,7 @@ def main():
     current_time = time.localtime()
     outdir = RENDER_OUTDIR + f"data_{current_time.tm_mon}-{current_time.tm_mday}-{current_time.tm_year}_{current_time.tm_hour}:{current_time.tm_min}:{current_time.tm_sec}/"
     
+    os.makedirs(outdir)
     with open(FEN_FILEPATH, 'r') as fen_file:
         
         lines = list(filter(lambda line: line.startswith(FEN_PREFIX), fen_file.readlines()))
@@ -106,6 +108,9 @@ def main():
         
         print(f"Rendering {len(lines)} positions")
         
+        with open(outdir+"labels.txt", 'w') as labelFile:
+            labelFile.write('\n'.join(lines))
+
         position = 0
         for line in lines:
             for i in range(RENDERS_PER_POSITION):
