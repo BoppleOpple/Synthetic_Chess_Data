@@ -1,3 +1,6 @@
 render multiple camera angles simultaneously
 dont reload board for each image if the position hasnt changed
 *maybe* do a better job of threading it
+rotate pieces you fool
+slight offsets from centers (for datagen)
+
