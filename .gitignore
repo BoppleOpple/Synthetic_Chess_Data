@@ -1,2 +1,3 @@
 gpucore.*
 output/
+__pycache__/
