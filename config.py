@@ -10,7 +10,7 @@ BLACK_YAW = math.pi / 2.0
 BACKGROUND_HDRI_DIR = "./backgrounds/"
 
 # Piece settings
-PIECE_MAX_DISTANCE = 0.2
+PIECE_MAX_DISTANCE = 0.1
 WHITE_PIECE_MATERIAL = "White_Pieces"
 BLACK_PIECE_MATERIAL = "Black_Pieces"
 
