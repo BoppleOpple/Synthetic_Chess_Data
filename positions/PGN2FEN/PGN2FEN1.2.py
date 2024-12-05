@@ -5,8 +5,8 @@ import cairosvg
 import os
 
 # File paths
-pgn_path = "/home/bopple/Desktop/School/UMO/COS 473/Synthetic_Chess_Data/positions/PGN2FEN/master_games.pgn"
-output_directory = "/home/bopple/Desktop/School/UMO/COS 473/Synthetic_Chess_Data/positions/PGN2FEN/output/"
+pgn_path = "./master_games.pgn"
+output_directory = "./output/"
 
 # Load the PGN file and process all games
 with open(pgn_path) as pgn_file:
