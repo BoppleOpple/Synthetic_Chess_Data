@@ -17,8 +17,6 @@ blender -b Chess_Board.blend -P CameraAngles.py
 - [ ] maybe add more material options
 - [ ] maybe add more background options
 - [ ] maybe add more light options
-- [ ] include PGN2FEN code in chess_scene_utils
-    - [ ] rename chess_scene_utils.py to helpers.py
 - [ ] maybe add a requirements.txt
 
 ## DONE
@@ -26,3 +24,5 @@ blender -b Chess_Board.blend -P CameraAngles.py
 - [x] rotate pieces you fool
 - [x] slight offsets from centers (for datagen)
 - [x] maybe add a README.md
+- [x] include PGN2FEN code in chess_scene_utils
+    - [x] rename chess_scene_utils.py to helpers.py

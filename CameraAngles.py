@@ -7,7 +7,7 @@ from random import sample
 # Add the parent directory to the system path to allow imports from the root directory
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from config import *
-from chess_scene_utils import get_hdri_files, process_pgn_file, randomize_background, randomize_object_position, load_position
+from helpers import get_hdri_files, process_pgn_file, randomize_background, randomize_object_position, load_position
 
 
 def main():
