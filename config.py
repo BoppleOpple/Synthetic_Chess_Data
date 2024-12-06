@@ -28,7 +28,13 @@ LIGHT_MIN_PITCH = math.pi / 10.0
 LIGHT_MAX_PITCH = math.pi / 2.0
 
 # File paths and rendering settings
-FEN_FILEPATH = "./positions/PGN2FEN/output/FEN-results.txt"
+FEN_FILEPATH = ""
+FEN_DIR = "./positions/fen/"
+PGN_DIR = "./positions/pgn/"
 FEN_PREFIX = "FEN format: "
-RENDER_OUTDIR = "./output/"
+OUTDIR = "./output/"
+PGN_OUTDIR = "/data/raw/pgns/"
+RENDER_OUTDIR = "/data/raw/games/"
+RENDER_OUTDIR_WHITE = "/orig/"
+RENDER_OUTDIR_BLACK = "/rev/"
 PROPORTION_POSITIONS_RENDERED = 0.001

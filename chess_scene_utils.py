@@ -1,8 +1,11 @@
 import os
-import bpy
+import bpy # type: ignore
 from mathutils import Vector
 from random import random, choice
 import math
+import chess
+import chess.pgn
+import chess.svg
 
 def randomize_object_position(object, board_height, r_min, r_max, pitch_min, pitch_max, yaw_range = 2.0 * math.pi, center_yaw = 0.0, is_camera=False):
     """
@@ -165,3 +168,75 @@ def randomize_background(background_hdri_list):
     links = node_tree.links
     links.new(node_environment.outputs["Color"], node_background.inputs["Color"])
     links.new(node_background.outputs["Background"], node_output.inputs["Surface"])
+
+def process_pgn_file(pgn_path, output_directory=None):
+    """
+    Process a PGN file and return a list of FEN strings.
+    Optionally save FEN strings to text files if output_directory is provided.
+    """
+    fen_positions = []
+    
+    with open(pgn_path) as pgn_file:
+        game_number = 1
+        while True:
+            game = chess.pgn.read_game(pgn_file)
+            if game is None:
+                break
+                
+            board = game.board()
+            game_positions = []
+            
+            # Store initial position
+            game_positions.append(board.fen())
+            
+            # Store position after each move
+            for move in game.mainline_moves():
+                board.push(move)
+                game_positions.append(board.fen())
+            
+            fen_positions.extend(game_positions)
+            game_number += 1
+        
+            if output_directory:
+                # Create output directory if it doesn't exist
+                os.makedirs(output_directory, exist_ok=True)
+                
+                # Save FEN string to text file
+                pgn_filename = os.path.splitext(os.path.basename(pgn_path))[0]
+                fen_file_path = os.path.join(output_directory, f"{pgn_filename}_game_{game_number}.fen")
+                with open(fen_file_path, 'w') as f:
+                    f.write('\n'.join(game_positions))
+    
+    return fen_positions
+
+def get_random_position(pgn_path):
+    """
+    Get a random FEN position from a PGN file.
+    """
+    positions = process_pgn_file(pgn_path)
+    return choice(positions) if positions else None
+
+def process_pgn_directory(pgn_directory, output_directory=None):
+    """
+    Process all PGN files in a directory and return a list of FEN strings.
+    Optionally save FEN strings to text files if output_directory is provided.
+    """
+    
+    all_positions = []
+    
+    # Get all PGN files in directory
+    pgn_files = [f for f in os.listdir(pgn_directory) if f.endswith('.pgn')]
+    
+    for pgn_file in pgn_files:
+        pgn_path = os.path.join(pgn_directory, pgn_file)
+        
+        # Create subdirectory for this PGN file's images if needed
+        file_output_dir = None
+        if output_directory:
+            os.makedirs(output_directory, exist_ok=True)
+        
+        # Process the PGN file
+        positions = process_pgn_file(pgn_path, output_directory)
+        all_positions.extend(positions)
+    
+    return all_positions
