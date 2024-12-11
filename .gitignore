@@ -1,3 +1,4 @@
 gpucore.*
 output/
+positions/pgn/*.pgn
 __pycache__/

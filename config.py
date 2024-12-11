@@ -15,10 +15,10 @@ WHITE_PIECE_MATERIAL = "White_Pieces"
 BLACK_PIECE_MATERIAL = "Black_Pieces"
 
 # Camera settings
-CAMERA_MIN_DISTANCE = 20.0
-CAMERA_MAX_DISTANCE = 50.0
+CAMERA_MIN_DISTANCE = 30.0
+CAMERA_MAX_DISTANCE = 70.0
 CAMERA_MIN_PITCH = math.pi / 10.0
-CAMERA_MAX_PITCH = math.pi / 2.0
+CAMERA_MAX_PITCH = math.pi * 2.0 / 5.0
 CAMERA_YAW_RANGE = math.pi / 2.0 # +/- 45 degrees
 
 # Light settings

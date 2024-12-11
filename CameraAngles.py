@@ -47,7 +47,7 @@ def main():
 
         # Create output directories and copy PGN file
         pgn_filename = os.path.splitext(os.path.basename(pgn_path))[0]
-        pgn_outdir = os.path.join(outdir, RENDER_OUTDIR.strip("/"), pgn_filename, PGN_OUTDIR.strip("/"))
+        pgn_outdir = os.path.join(outdir, PGN_OUTDIR.strip("/"))
         os.makedirs(pgn_outdir, exist_ok=True)
         
         # Copy PGN file to output directory
